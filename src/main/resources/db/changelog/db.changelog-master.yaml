@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024-03-31_14:27
+      author: hugo.casiano
+      changes:
+        - sql:
+            CREATE TABLE `ejemplo_tabla_con_liquibase_hugocasiano_maxikash` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `ejemplo` int(11) DEFAULT NULL,            
+            PRIMARY KEY (`id`)
+            );

@@ -1,0 +1,70 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "localhost:8080",
+      "image": "312900667037.dkr.ecr.us-east-1.amazonaws.com/maxi-repository:XXX",
+      "cpu": 0,
+      "portMappings": [
+        {
+          "name": "localhost:8080",
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp",
+          "appProtocol": "http"
+        }
+      ],
+      "secrets": [
+      ],
+      "essential": true,
+      "environment": [
+        {
+          "name": "TZ",
+          "value": "America/Mexico_City"
+        },
+        {
+          "name": "SPRING_PROFILES_ACTIVE",
+          "value": "prod"
+        }
+      ],
+      "environmentFiles": [],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "ulimits": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "localhost:8080",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:8080/actuator/health || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      }
+    }
+  ],
+  "family": "localhost:8080",
+  "taskRoleArn": "arn:aws:iam::312900667037:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::312900667037:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "volumes": [],
+  "placementConstraints": [],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "4096",
+  "memory": "8192",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "tags": []
+}
