@@ -26,7 +26,7 @@ public class CloudTasksService {
             @Value("${gcp.tasks.project}") String projectId,
             @Value("${gcp.tasks.location}") String locationId,
             @Value("${gcp.tasks.queue}") String queueId,
-            @Value("${tasks.worker.base-url:https://loki-backend-601258367060.us-central1.run.app}") String baseUrl) {
+            @Value("${tasks.worker.base-url:}") String baseUrl) {
         this.projectId = projectId;
         this.locationId = locationId;
         this.queueId = queueId;
